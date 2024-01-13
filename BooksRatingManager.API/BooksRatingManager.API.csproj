@@ -12,4 +12,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="BooksRatingManager.API.http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BooksRatingManager.Core\BooksRatingManager.Core.csproj" />
+    <ProjectReference Include="..\BooksRatingManager.Infrastructure\BooksRatingManager.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

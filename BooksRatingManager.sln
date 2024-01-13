@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksRatingManager.API", "BooksRatingManager.API\BooksRatingManager.API.csproj", "{B4B92D44-1B70-416A-A6FF-DF9EE9EF89A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksRatingManager.Core", "BooksRatingManager.Core\BooksRatingManager.Core.csproj", "{902AB446-DB13-46DD-921B-1CBD9682FDDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksRatingManager.Infrastructure", "BooksRatingManager.Infrastructure\BooksRatingManager.Infrastructure.csproj", "{5100BBFA-9935-41E7-9338-7080E7E70279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksRatingManager.Application", "BooksRatingManager.Application\BooksRatingManager.Application.csproj", "{C2179FB6-4564-4EBD-94B4-FBA69D090346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{B4B92D44-1B70-416A-A6FF-DF9EE9EF89A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4B92D44-1B70-416A-A6FF-DF9EE9EF89A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4B92D44-1B70-416A-A6FF-DF9EE9EF89A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{902AB446-DB13-46DD-921B-1CBD9682FDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{902AB446-DB13-46DD-921B-1CBD9682FDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{902AB446-DB13-46DD-921B-1CBD9682FDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{902AB446-DB13-46DD-921B-1CBD9682FDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5100BBFA-9935-41E7-9338-7080E7E70279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5100BBFA-9935-41E7-9338-7080E7E70279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5100BBFA-9935-41E7-9338-7080E7E70279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5100BBFA-9935-41E7-9338-7080E7E70279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2179FB6-4564-4EBD-94B4-FBA69D090346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2179FB6-4564-4EBD-94B4-FBA69D090346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2179FB6-4564-4EBD-94B4-FBA69D090346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2179FB6-4564-4EBD-94B4-FBA69D090346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
