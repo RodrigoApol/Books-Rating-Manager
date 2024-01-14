@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddc5de87-e562-4dde-ab7d-b32d5074639d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BooksRatingManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BooksRatingManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BooksRatingManager.API/BooksRatingManager.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BooksRatingManager.API/BooksRatingManager.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BooksRatingManager.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BooksRatingManager.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BooksRatingManager.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BooksRatingManager.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.BooksRatingManager.API: http.executor": "Debug",
+    ".NET Launch Settings Profile.BooksRatingManager.API: http.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -122,6 +120,7 @@
       <workItem from="1705150334551" duration="33000" />
       <workItem from="1705150913029" duration="5217000" />
       <workItem from="1705158166299" duration="4933000" />
+      <workItem from="1705235747985" duration="607000" />
     </task>
     <servers />
   </component>
