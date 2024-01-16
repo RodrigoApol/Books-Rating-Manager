@@ -17,6 +17,7 @@ public class User : BaseEntity
         
         UserStatus = EUserStatus.Active;
         Reviews = new List<Review>();
+        CreatedAt = DateTime.Now;
     }
     
     public string Name { get; private set; }

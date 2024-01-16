@@ -15,6 +15,7 @@ public class Review : BaseEntity
         Description = description;
         IdUser = idUser;
         IdBook = idBook;
+        CreatedAt = DateTime.Now;
     }
     public int Note { get; private set; }
     public string Description { get; private set; }

@@ -7,19 +7,18 @@ public class Book : BaseEntity
 {
     protected Book()
     {
-        
     }
-    
+
     public Book(
-        string title, 
-        string description, 
-        string isbn, 
-        string author, 
-        string publisher, 
-        EBookGenre genre, 
-        int yearPublication, 
-        int pages, 
-        decimal average, 
+        string title,
+        string description,
+        string isbn,
+        string author,
+        string publisher,
+        EBookGenre genre,
+        int yearPublication,
+        int pages,
+        decimal average,
         byte cover)
     {
         Title = title;
@@ -33,7 +32,9 @@ public class Book : BaseEntity
         Average = average;
         Cover = cover;
         Reviews = new List<Review>();
+        CreatedAt = DateTime.Now;
     }
+
     public string Title { get; private set; }
     public string Description { get; private set; }
     public string ISBN { get; private set; }
@@ -45,4 +46,16 @@ public class Book : BaseEntity
     public decimal Average { get; private set; }
     public byte Cover { get; private set; }
     public List<Review> Reviews { get; private set; }
+
+    public void UpdateBook(
+        string title,
+        string description,
+        string author,
+        int yearPublication)
+    {
+        Title = title;
+        Description = description;
+        Author = author;
+        YearPublication = yearPublication;
+    }
 }
