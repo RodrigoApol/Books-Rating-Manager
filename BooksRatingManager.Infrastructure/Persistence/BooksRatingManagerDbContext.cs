@@ -1,18 +1,21 @@
+using System.Reflection;
 using BooksRatingManager.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksRatingManager.Infrastructure.Persistence;
 
-public class BooksRatingManagerDbContext
+public class BooksRatingManagerDbContext : DbContext
 {
-    public BooksRatingManagerDbContext()
+    public BooksRatingManagerDbContext(DbContextOptions<BooksRatingManagerDbContext> options) : base(options)
     {
-        Books = new List<Book>();
-        Reviews = new List<Review>();
-        Users = new List<User>();
     }
     
-    public List<Book> Books { get;  set; }
-    public List<Review> Reviews { get; set; }
-    public List<User> Users { get; set; }
-        
+    public DbSet<Book> Books { get;  set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<User> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 }

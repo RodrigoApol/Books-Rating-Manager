@@ -1,5 +1,10 @@
+using BooksRatingManager.Application.Commands.BookCommands.CreateBook;
+using BooksRatingManager.Application.Commands.BookCommands.UpdateBook;
+using BooksRatingManager.Application.Queries.BookQueries.GetAll;
+using BooksRatingManager.Application.Queries.BookQueries.GetById;
 using BooksRatingManager.Core.Entities;
 using BooksRatingManager.Infrastructure.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksRatingManager.API.Controllers;
@@ -8,66 +13,57 @@ namespace BooksRatingManager.API.Controllers;
 [ApiController]
 public class BooksController : ControllerBase
 {
-    private readonly BooksRatingManagerDbContext _dbContext;
+    private readonly IMediator _mediator;
 
-    public BooksController(BooksRatingManagerDbContext dbContext)
+    public BooksController(IMediator mediator)
     {
-        _dbContext = dbContext;
+        _mediator = mediator;
     }
+    
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var books = _dbContext.Books;
+        var query = new GetAllQuery();
+        
+        var books = await _mediator.Send(query);
         
         return Ok(books);
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
-        var book = _dbContext.Books.SingleOrDefault(b => b.Id == id);
+        var query = new GetByIdQuery(id);
+
+        var book = _mediator.Send(query);
         
         return Ok(book);
     }
 
     [HttpPost]
-    public IActionResult Post(Book book)
+    public async Task<IActionResult> Post(CreateBookCommand command)
     {
-        _dbContext.Books.Add(book);
+        var id = await _mediator.Send(command);
         
         return CreatedAtAction(
             nameof(GetById),
-            new { id = book.Id },
-            book
+            new { id = id },
+            command
         );
     }
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, Book book)
+    public async Task<IActionResult> Put(UpdateBookCommand command)
     {
-        var bookExists = _dbContext.Books.SingleOrDefault(b => b.Id == id);
-
-        if (bookExists is null)
-        {
-            return NotFound();
-        }
-
-        bookExists.UpdateBook(book.Title, book.Description, book.Author, book.YearPublication);
+        await _mediator.Send(command);
         
         return NoContent();
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var bookExists = _dbContext.Books.SingleOrDefault(b => b.Id == id);
-
-        if (bookExists is null)
-        {
-            return NotFound();
-        }
-
-        _dbContext.Books.Remove(bookExists);
+        await _mediator.Send(id);
         
         return NoContent();
     }

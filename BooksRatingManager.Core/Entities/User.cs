@@ -24,4 +24,15 @@ public class User : BaseEntity
     public string Email { get; private set; }
     public EUserStatus UserStatus { get; private set; }
     public List<Review> Reviews { get; private set; }
+
+    public void UpdateUser(string name, string email)
+    {
+        Name = name;
+        Email = email;
+    }
+
+    public void InactiveUser()
+    {
+        UserStatus = EUserStatus.Inactive;
+    }
 }

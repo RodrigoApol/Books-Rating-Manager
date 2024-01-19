@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using BooksRatingManager.Core.Entities.Base;
 using BooksRatingManager.Core.Enums;
 
@@ -9,6 +10,11 @@ public class Book : BaseEntity
     {
     }
 
+    public Book(byte[] cover)
+    {
+        Cover = cover;
+    }
+
     public Book(
         string title,
         string description,
@@ -16,10 +22,9 @@ public class Book : BaseEntity
         string author,
         string publisher,
         EBookGenre genre,
-        int yearPublication,
+        int publicationYear,
         int pages,
-        decimal average,
-        byte cover)
+        decimal average)
     {
         Title = title;
         Description = description;
@@ -27,10 +32,9 @@ public class Book : BaseEntity
         Author = author;
         Publisher = publisher;
         Genre = genre;
-        YearPublication = yearPublication;
+        PublicationYear = publicationYear;
         Pages = pages;
         Average = average;
-        Cover = cover;
         Reviews = new List<Review>();
         CreatedAt = DateTime.Now;
     }
@@ -41,21 +45,21 @@ public class Book : BaseEntity
     public string Author { get; private set; }
     public string Publisher { get; private set; }
     public EBookGenre Genre { get; private set; }
-    public int YearPublication { get; private set; }
+    public int PublicationYear { get; private set; }
     public int Pages { get; private set; }
     public decimal Average { get; private set; }
-    public byte Cover { get; private set; }
+    public byte[] Cover { get; private set; }
     public List<Review> Reviews { get; private set; }
 
     public void UpdateBook(
         string title,
         string description,
         string author,
-        int yearPublication)
+        int publicationYear)
     {
         Title = title;
         Description = description;
         Author = author;
-        YearPublication = yearPublication;
+        PublicationYear = publicationYear;
     }
 }

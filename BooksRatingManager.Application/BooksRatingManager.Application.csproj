@@ -8,6 +8,34 @@
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
+      <Compile Remove="Repositories\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BooksRatingManager.Core\BooksRatingManager.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Repositories\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Repositories\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Commands\ReviewsCommands\" />
+      <Folder Include="Commands\UserCommands\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.1" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
     </ItemGroup>
 
 </Project>
