@@ -1,6 +1,7 @@
 using BooksRatingManager.Application.Commands.BookCommands.CreateBook;
 using BooksRatingManager.Application.Commands.BookCommands.UpdateBook;
 using BooksRatingManager.Application.Queries.BookQueries.GetAll;
+using BooksRatingManager.Application.Queries.BookQueries.GetAllBooks;
 using BooksRatingManager.Application.Queries.BookQueries.GetById;
 using BooksRatingManager.Core.Entities;
 using BooksRatingManager.Infrastructure.Persistence;
@@ -23,7 +24,7 @@ public class BooksController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var query = new GetAllQuery();
+        var query = new GetAllBooksQuery();
         
         var books = await _mediator.Send(query);
         
@@ -33,9 +34,9 @@ public class BooksController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var query = new GetByIdQuery(id);
+        var query = new GetBookByIdQuery(id);
 
-        var book = _mediator.Send(query);
+        var book = await _mediator.Send(query);
         
         return Ok(book);
     }

@@ -24,11 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Commands\ReviewsCommands\" />
-      <Folder Include="Commands\UserCommands\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="MediatR" Version="12.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
         <PrivateAssets>all</PrivateAssets>

@@ -1,20 +1,21 @@
 using BooksRatingManager.Application.Models.MappingViewModels;
 using BooksRatingManager.Application.Models.ViewModels;
+using BooksRatingManager.Application.Queries.BookQueries.GetAllBooks;
 using BooksRatingManager.Core.Repositories;
 using MediatR;
 
 namespace BooksRatingManager.Application.Queries.BookQueries.GetAll;
 
-public class GetAllQueryHandler : IRequestHandler<GetAllQuery, List<BookViewModel>>
+public class GetAllBooksQueryHandler : IRequestHandler<GetAllBooksQuery, List<BookViewModel>>
 {
     private readonly IBookRepository _bookRepository;
 
-    public GetAllQueryHandler(IBookRepository bookRepository)
+    public GetAllBooksQueryHandler(IBookRepository bookRepository)
     {
         _bookRepository = bookRepository;
     }
 
-    public async Task<List<BookViewModel>> Handle(GetAllQuery request, CancellationToken cancellationToken)
+    public async Task<List<BookViewModel>> Handle(GetAllBooksQuery request, CancellationToken cancellationToken)
     {
         var books = await _bookRepository.GetAllAsync();
 

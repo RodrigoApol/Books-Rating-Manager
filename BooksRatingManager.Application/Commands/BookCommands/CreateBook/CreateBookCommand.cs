@@ -13,5 +13,4 @@ public class CreateBookCommand : IRequest<int>
     public EBookGenre Genre { get; set; }
     public int YearPublication { get; set; }
     public int Pages { get; set; }
-    public decimal Average { get;  set; }
 }

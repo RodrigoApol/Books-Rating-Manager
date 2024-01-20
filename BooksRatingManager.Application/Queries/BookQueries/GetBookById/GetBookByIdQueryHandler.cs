@@ -5,16 +5,16 @@ using MediatR;
 
 namespace BooksRatingManager.Application.Queries.BookQueries.GetById;
 
-public class GetByIdQueryHandler : IRequestHandler<GetByIdQuery, BookDetailsViewModel>
+public class GetBookByIdQueryHandler : IRequestHandler<GetBookByIdQuery, BookDetailsViewModel>
 {
     private readonly IBookRepository _bookRepository;
 
-    public GetByIdQueryHandler(IBookRepository bookRepository)
+    public GetBookByIdQueryHandler(IBookRepository bookRepository)
     {
         _bookRepository = bookRepository;
     }
     
-    public async Task<BookDetailsViewModel> Handle(GetByIdQuery request, CancellationToken cancellationToken)
+    public async Task<BookDetailsViewModel> Handle(GetBookByIdQuery request, CancellationToken cancellationToken)
     {
         var book = await _bookRepository.GetByIdAsync(request.Id);
 

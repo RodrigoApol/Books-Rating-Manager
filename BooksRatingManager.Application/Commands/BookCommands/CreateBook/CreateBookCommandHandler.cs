@@ -10,7 +10,7 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
 
     public CreateBookCommandHandler(IBookRepository bookRepository)
     {
-        _bookRepository = _bookRepository;
+        _bookRepository = bookRepository;
     }
 
     public async Task<int> Handle(CreateBookCommand request, CancellationToken cancellationToken)
@@ -23,10 +23,9 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
             request.Publisher,
             request.Genre,
             request.YearPublication,
-            request.Pages,
-            request.Average);
+            request.Pages);
 
-        await _bookRepository.CreateBookAsync(book);
+        await _bookRepository.CreateBookAsync(book); //
         await _bookRepository.SaveChangesAsync();
 
         return book.Id;

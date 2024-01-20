@@ -10,15 +10,15 @@ public class Review : BaseEntity
         
     }
     
-    public Review(int note, string description, int idUser, int idBook)
+    public Review(int rating, string description, int idUser, int idBook)
     {
-        Note = note;
+        Rating = rating;
         Description = description;
         IdUser = idUser;
         IdBook = idBook;
         CreatedAt = DateTime.Now;
     }
-    public int Note { get; private set; }
+    public int Rating { get; private set; }
     public string Description { get; private set; }
     [JsonIgnore]
     public User User { get; private set; }

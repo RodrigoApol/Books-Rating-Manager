@@ -1,9 +1,8 @@
 using BooksRatingManager.Core.Entities;
 using BooksRatingManager.Core.Repositories;
-using BooksRatingManager.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace BooksRatingManager.Infrastructure.Repositories;
+namespace BooksRatingManager.Infrastructure.Persistence.Repositories;
 
 public class BookRepository : IBookRepository
 {
@@ -29,6 +28,18 @@ public class BookRepository : IBookRepository
     public async Task CreateBookAsync(Book book)
     {
         await _dbContext.Books.AddAsync(book);
+    }
+
+    public async Task UpdateAverage(int id)
+    {
+        var book = await _dbContext.Books.SingleOrDefaultAsync(b => b.Id == id);
+
+        if (book is null)
+        {
+            throw new Exception();
+        }
+        
+        book.UpdateAverage();
     }
 
     public async Task DeleteBookAsync(int id)

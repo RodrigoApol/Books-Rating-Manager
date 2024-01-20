@@ -17,7 +17,7 @@ public class BookDetailsViewModel
         Average = average;
         Cover = cover;
 
-        Reviews = new List<Review>();
+        Reviews = new List<ReviewsViewModel>();
     }
 
     public string Title { get; set; }
@@ -30,5 +30,5 @@ public class BookDetailsViewModel
     public int Pages { get; set; }
     public decimal Average { get; set; }
     public byte[] Cover { get; set; }
-    public List<Review> Reviews { get; set; }
+    public List<ReviewsViewModel> Reviews { get; set; }
 }

@@ -1,7 +1,7 @@
 using BooksRatingManager.Application.Commands.BookCommands.CreateBook;
 using BooksRatingManager.Core.Repositories;
 using BooksRatingManager.Infrastructure.Persistence;
-using BooksRatingManager.Infrastructure.Repositories;
+using BooksRatingManager.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +11,8 @@ builder.Services.AddDbContext<BooksRatingManagerDbContext>(
     o => o.UseInMemoryDatabase("BooksRatingManager"));
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
 
 builder.Services.AddMediatR(op => op.RegisterServicesFromAssemblyContaining(typeof(CreateBookCommand)));
