@@ -1,4 +1,5 @@
 using BooksRatingManager.Application.Commands.BookCommands.CreateBook;
+using BooksRatingManager.Application.Commands.BookCommands.DeleteBook;
 using BooksRatingManager.Application.Commands.BookCommands.UpdateBook;
 using BooksRatingManager.Application.Queries.BookQueries.GetAll;
 using BooksRatingManager.Application.Queries.BookQueries.GetAllBooks;
@@ -64,7 +65,9 @@ public class BooksController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mediator.Send(id);
+        var command = new DeleteBookCommand(id);
+        
+        await _mediator.Send(command);
         
         return NoContent();
     }

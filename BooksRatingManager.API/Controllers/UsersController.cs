@@ -1,7 +1,8 @@
 using BooksRatingManager.Application.Commands.UserCommands.CreateUser;
+using BooksRatingManager.Application.Commands.UserCommands.InactiveUser;
 using BooksRatingManager.Application.Commands.UserCommands.UpdateUser;
-using BooksRatingManager.Application.Queries.BookQueries.GetById;
 using BooksRatingManager.Application.Queries.UserQueries.GetAll;
+using BooksRatingManager.Application.Queries.UserQueries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +32,7 @@ public class UsersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var query = new GetBookByIdQuery(id);
+        var query = new GetUserByIdQuery(id);
 
         var user = await _mediator.Send(query);
 
@@ -60,7 +61,9 @@ public class UsersController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mediator.Send(id);
+        var command = new InactiveUserCommand(id);
+        
+        await _mediator.Send(command);
 
         return NoContent();
     }

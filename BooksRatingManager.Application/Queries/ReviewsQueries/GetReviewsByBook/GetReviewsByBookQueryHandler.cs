@@ -18,6 +18,8 @@ public class GetReviewsByBookQueryHandler : IRequestHandler<GetReviewsByBookQuer
     {
         var reviews = await _reviewRepository.GetReviewsByBookAsync(request.Id);
 
-        return reviews.ToViewModel().ToList();
+        return reviews
+            .ToViewModel()
+            .ToList();
     }
 }
