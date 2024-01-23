@@ -12,7 +12,7 @@ public class ReviewRepository : IReviewRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<List<Review>> GetReviewsByBookAsync(int id)
     {
         return await _dbContext.Reviews.Where(r => r.IdBook == id)
@@ -23,6 +23,17 @@ public class ReviewRepository : IReviewRepository
 
     public async Task CreateReviewAsync(Review review)
     {
+        var book = await _dbContext.Books.SingleOrDefaultAsync(b => b.Id == review.IdBook)
+                   ?? throw new ArgumentException("Book not Exists");
+
+        var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == review.IdUser)
+                   ?? throw new ArgumentException("User not Exists");
+
+        if (review.ReviewIsValid() == false)
+        {
+            throw new ArgumentException("Rating is not valid");
+        }
+
         await _dbContext.Reviews.AddAsync(review);
     }
 

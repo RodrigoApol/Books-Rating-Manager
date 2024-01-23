@@ -1,6 +1,7 @@
 using BooksRatingManager.Application.Commands.BookCommands.CreateBook;
 using BooksRatingManager.Application.Commands.BookCommands.DeleteBook;
 using BooksRatingManager.Application.Commands.BookCommands.UpdateBook;
+using BooksRatingManager.Application.Commands.BookCommands.UploadCoverBook;
 using BooksRatingManager.Application.Queries.BookQueries.GetAll;
 using BooksRatingManager.Application.Queries.BookQueries.GetAllBooks;
 using BooksRatingManager.Application.Queries.BookQueries.GetById;
@@ -60,6 +61,16 @@ public class BooksController : ControllerBase
         await _mediator.Send(command);
         
         return NoContent();
+    }
+
+    [HttpPut("Upload/{id}")]
+    public async Task<IActionResult> Upload(IFormFile cover, int id)
+    {
+        var command = new UploadCoverBookCommand(id, cover);
+
+        await _mediator.Send(command);
+
+        return Ok("Foto Atualizada");
     }
 
     [HttpDelete("{id}")]

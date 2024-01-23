@@ -26,4 +26,9 @@ public class Review : BaseEntity
     [JsonIgnore]
     public Book Book { get; private set; }
     public int IdBook { get; private set; }
+
+    public bool ReviewIsValid()
+    {
+        return Rating >= 1 && Rating <= 5;
+    }
 }

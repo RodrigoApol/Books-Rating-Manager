@@ -56,15 +56,27 @@ public class Book : BaseEntity
         PublicationYear = publicationYear;
     }
 
+    public void UploadCover(byte[] cover)
+    {
+        Cover = cover;
+    }
+
     public void UpdateAverage()
     {
         decimal sum = 0;
 
-        foreach (var review in Reviews)
+        if (Reviews.Count > 0)
         {
-            sum += review.Rating;
+            foreach (var review in Reviews)
+            {
+                sum += review.Rating;
+            }
+            
+            Average = sum / Reviews.Count;
         }
-
-        Average = sum / Reviews.Count;
+        else
+        {
+            Average = 0;
+        }
     }
 }
