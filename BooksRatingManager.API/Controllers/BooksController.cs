@@ -2,11 +2,8 @@ using BooksRatingManager.Application.Commands.BookCommands.CreateBook;
 using BooksRatingManager.Application.Commands.BookCommands.DeleteBook;
 using BooksRatingManager.Application.Commands.BookCommands.UpdateBook;
 using BooksRatingManager.Application.Commands.BookCommands.UploadCoverBook;
-using BooksRatingManager.Application.Queries.BookQueries.GetAll;
 using BooksRatingManager.Application.Queries.BookQueries.GetAllBooks;
 using BooksRatingManager.Application.Queries.BookQueries.GetById;
-using BooksRatingManager.Core.Entities;
-using BooksRatingManager.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -70,7 +67,7 @@ public class BooksController : ControllerBase
 
         await _mediator.Send(command);
 
-        return Ok("Foto Atualizada");
+        return NoContent();
     }
 
     [HttpDelete("{id}")]

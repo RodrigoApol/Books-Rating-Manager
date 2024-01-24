@@ -29,6 +29,9 @@ public class Review : BaseEntity
 
     public bool ReviewIsValid()
     {
-        return Rating >= 1 && Rating <= 5;
+        const int minRating = 1;
+        const int maxRating = 5;
+        
+        return Rating >= minRating && Rating <= maxRating;
     }
 }
