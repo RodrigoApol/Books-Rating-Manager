@@ -13,7 +13,27 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
         builder
             .HasMany(b => b.Reviews)
             .WithOne(r => r.Book)
-            .HasForeignKey(r => r.Id)
+            .HasForeignKey(r => r.IdBook)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder
+            .Property(b => b.Title)
+            .HasMaxLength(50)
+            .HasColumnType("varchar(50)");
+        
+        builder
+            .Property(b => b.Description)
+            .HasMaxLength(100)
+            .HasColumnType("varchar(100)");
+        
+        builder
+            .Property(b => b.Author)
+            .HasMaxLength(50)
+            .HasColumnType("varchar(50)");
+        
+        builder
+            .Property(b => b.Publisher)
+            .HasMaxLength(50)
+            .HasColumnType("varchar(50)");
     }
 }

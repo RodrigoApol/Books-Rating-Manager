@@ -20,17 +20,25 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetDetailsAsync(int id)
     {
-        var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == id);
+        var user = await _dbContext.Users.
+            Include(u => u.Reviews)
+            .SingleOrDefaultAsync(u => u.Id == id);
 
         return user ?? throw new Exception();
     }
 
     public async Task CreateUserAsync(User user)
     {
+        var alreadyRegisteredUser = _dbContext.Users.SingleOrDefault(u => u.Email == user.Email);
+
+        if (alreadyRegisteredUser is not null)
+        {
+            throw new ArgumentException("already registered user");
+        }
+
         await _dbContext.Users.AddAsync(user);
     }
     
-
     public async Task SaveChangesAsync()
     {
         await _dbContext.SaveChangesAsync();

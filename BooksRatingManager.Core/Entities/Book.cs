@@ -28,8 +28,9 @@ public class Book : BaseEntity
         PublicationYear = publicationYear;
         Pages = pages;
         Average = 0;
+        
         Reviews = new List<Review>();
-        CreatedAt = DateTime.Now;
+        CreatedAt = DateTime.Now.ToUniversalTime();
     }
 
     public string Title { get; private set; }
@@ -42,7 +43,7 @@ public class Book : BaseEntity
     public int Pages { get; private set; }
     public decimal Average { get; private set; }
     public byte[]? Cover { get;  set; }
-    public List<Review> Reviews { get; private set; }
+    public List<Review> Reviews { get;  private set; }
 
     public void UpdateBook(
         string title,

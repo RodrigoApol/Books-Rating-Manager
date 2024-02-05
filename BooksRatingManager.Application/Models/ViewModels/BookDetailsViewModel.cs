@@ -4,7 +4,7 @@ namespace BooksRatingManager.Application.Models.ViewModels;
 
 public class BookDetailsViewModel
 {
-    public BookDetailsViewModel(string title, string description, string isbn, string author, string publisher, string genre, int publicationYear, int pages, decimal average, byte[] cover)
+    public BookDetailsViewModel(string title, string description, string isbn, string author, string publisher, string genre, int publicationYear, int pages, decimal average, byte[] cover, List<ReviewsViewModel> reviews)
     {
         Title = title;
         Description = description;
@@ -16,8 +16,7 @@ public class BookDetailsViewModel
         Pages = pages;
         Average = average;
         Cover = cover;
-
-        Reviews = new List<ReviewsViewModel>();
+        Reviews = reviews;
     }
 
     public string Title { get; set; }

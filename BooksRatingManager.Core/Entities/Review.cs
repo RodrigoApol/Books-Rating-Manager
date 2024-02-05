@@ -16,7 +16,7 @@ public class Review : BaseEntity
         Description = description;
         IdUser = idUser;
         IdBook = idBook;
-        CreatedAt = DateTime.Now;
+        CreatedAt = DateTime.Now.ToUniversalTime();
     }
     public int Rating { get; private set; }
     public string Description { get; private set; }

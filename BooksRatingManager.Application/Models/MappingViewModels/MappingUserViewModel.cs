@@ -11,5 +11,11 @@ public static class MappingUserViewModel
     }
 
     public static UserDetailsViewModel ToViewModelWithId(this User user)
-        => new(user.Name, user.Email, user.UserStatus.ToString());
+        => new(
+            user.Name, 
+            user.Email, 
+            user.UserStatus.ToString(), 
+            user.Reviews
+                .ToViewModel()
+                .ToList());
 }

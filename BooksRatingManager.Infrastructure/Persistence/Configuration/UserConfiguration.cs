@@ -14,7 +14,17 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder
             .HasMany(u => u.Reviews)
             .WithOne(r => r.User)
-            .HasForeignKey(r => r.Id)
+            .HasForeignKey(r => r.IdUser)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder
+            .Property(u => u.Name)
+            .HasMaxLength(50)
+            .HasColumnType("varchar(50)");
+
+        builder
+            .Property(u => u.Email)
+            .HasMaxLength(50)
+            .HasColumnType("varchar(50)");
     }
 }

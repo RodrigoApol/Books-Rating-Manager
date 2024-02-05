@@ -28,5 +28,8 @@ public static class MappingBookViewModel
             book.PublicationYear,
             book.Pages,
             book.Average,
-            book.Cover);
+            book.Cover,
+            book.Reviews
+                .ToViewModel()
+                .ToList());
 }

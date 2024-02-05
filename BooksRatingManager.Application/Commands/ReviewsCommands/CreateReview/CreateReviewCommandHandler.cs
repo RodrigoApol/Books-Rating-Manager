@@ -18,9 +18,11 @@ public class CreateReviewCommandHandler : IRequestHandler<CreateReviewCommand, i
     public async Task<int> Handle(CreateReviewCommand request, CancellationToken cancellationToken)
     {
         var review = new Review(request.Rating, request.Description, request.IdUser, request.IdBook);
-
+        
         await _reviewRepository.CreateReviewAsync(review);
+        
         await _bookRepository.UpdateAverage(request.IdBook);
+        
         await _reviewRepository.SaveChangesAsync();
 
         return review.Id;

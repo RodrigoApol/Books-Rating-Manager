@@ -12,7 +12,7 @@ public class BookRepository : IBookRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<List<Book>> GetAllAsync()
     {
         return await _dbContext.Books.ToListAsync();
@@ -20,7 +20,9 @@ public class BookRepository : IBookRepository
 
     public async Task<Book> GetByIdAsync(int id)
     {
-        var book = await  _dbContext.Books.SingleOrDefaultAsync(b => b.Id == id);
+        var book = await _dbContext.Books
+            .Include(b => b.Reviews)
+            .SingleOrDefaultAsync(b => b.Id == id);
 
         return book ?? throw new Exception();
     }
@@ -32,13 +34,15 @@ public class BookRepository : IBookRepository
 
     public async Task UpdateAverage(int id)
     {
-        var book = await _dbContext.Books.SingleOrDefaultAsync(b => b.Id == id);
+        var book = await _dbContext.Books
+            .Include(b => b.Reviews)
+            .SingleOrDefaultAsync(b => b.Id == id);
 
         if (book is null)
         {
-            throw new Exception();
+            throw new ArgumentException("Book not exists");
         }
-        
+
         book.UpdateAverage();
     }
 

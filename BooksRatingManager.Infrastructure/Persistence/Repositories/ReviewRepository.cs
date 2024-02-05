@@ -1,4 +1,5 @@
 using BooksRatingManager.Core.Entities;
+using BooksRatingManager.Core.Enums;
 using BooksRatingManager.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,12 +30,18 @@ public class ReviewRepository : IReviewRepository
         var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == review.IdUser)
                    ?? throw new ArgumentException("User not Exists");
 
+        if (user.UserStatus == EUserStatus.Inactive)
+        {
+            throw new ArgumentException("User status is not valid");
+        }
+
         if (review.ReviewIsValid() == false)
         {
             throw new ArgumentException("Rating is not valid");
         }
 
         await _dbContext.Reviews.AddAsync(review);
+        await _dbContext.SaveChangesAsync();
     }
 
     public async Task SaveChangesAsync()

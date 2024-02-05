@@ -3,14 +3,14 @@ using MediatR;
 
 namespace BooksRatingManager.Application.Models.ViewModels;
 
-public class UserDetailsViewModel : IRequest
+public class UserDetailsViewModel
 {
-    public UserDetailsViewModel(string name, string email, string userStatus)
+    public UserDetailsViewModel(string name, string email, string userStatus, List<ReviewsViewModel> reviews)
     {
         Name = name;
         Email = email;
         UserStatus = userStatus;
-        Reviews = new List<ReviewsViewModel>();
+        Reviews = reviews;
     }
 
     public string Name { get; set; }
