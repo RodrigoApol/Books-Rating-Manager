@@ -24,7 +24,7 @@ public class BookRepository : IBookRepository
             .Include(b => b.Reviews)
             .SingleOrDefaultAsync(b => b.Id == id);
 
-        return book ?? throw new Exception();
+        return book ?? throw new ArgumentException("Book not Found");
     }
 
     public async Task CreateBookAsync(Book book)

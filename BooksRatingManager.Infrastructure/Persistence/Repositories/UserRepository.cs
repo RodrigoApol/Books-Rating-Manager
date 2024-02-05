@@ -24,7 +24,7 @@ public class UserRepository : IUserRepository
             Include(u => u.Reviews)
             .SingleOrDefaultAsync(u => u.Id == id);
 
-        return user ?? throw new Exception();
+        return user ?? throw new ArgumentException("User not found");
     }
 
     public async Task CreateUserAsync(User user)
